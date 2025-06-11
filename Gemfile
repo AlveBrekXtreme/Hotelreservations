@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+ruby "3.3.7"
 
 gem "rails", "~> 8.0.2"
 gem "propshaft"

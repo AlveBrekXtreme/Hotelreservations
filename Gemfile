@@ -15,7 +15,7 @@ gem "devise", "~> 4.9", ">= 4.9.3"
 gem "haml"
 gem "haml-rails", "~> 2.0"
 
-gem "tailwindcss-rails", "~> 3.3.1"
+gem "tailwindcss-rails", "~> 4.2.3"
 
 gem "simple_form"
 

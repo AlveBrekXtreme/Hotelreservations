@@ -15,7 +15,8 @@ production:
     <<: *default
     database: hotellbestillingssystem_prod
     username: hotellbestillingssystem
-    password: <%= ENV["HOTELLBESTILLINGSSYSTEM_DATABASE_PASSWORD"] %>
+    password: <%= ENV["PASSWORD"] %>
+    url: <%= ENV['DATABASE_URL'] %>
   cache:
     <<: *primary_production
     database: hotellbestillingssystem_production_cache

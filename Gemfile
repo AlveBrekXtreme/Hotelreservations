@@ -17,6 +17,16 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+gem "devise", "~> 4.9", ">= 4.9.3"
+
+gem "haml"
+gem "haml-rails", "~> 2.0"
+
+gem "tailwindcss-rails", "~> 3.3.1"
+
+gem "simple_form"
+
+gem "faker"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
@@ -54,6 +64,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "ruby_ui", "~> 1.0", require: false
 end
 
 group :test do

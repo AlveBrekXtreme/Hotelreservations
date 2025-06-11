@@ -13,7 +13,7 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: hotellbestillingssystem_production
+    database: hotellbestillingssystem_prod
     username: hotellbestillingssystem
     password: <%= ENV["HOTELLBESTILLINGSSYSTEM_DATABASE_PASSWORD"] %>
   cache:

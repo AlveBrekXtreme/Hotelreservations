@@ -1,0 +1,28 @@
+%h2 Log in
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .form-inputs
+    .input
+      = f.label :email
+      = render RubyUI::Input.new(type: :email,
+                                 reqired: true,
+                                 autofocus: true,
+                                 name: "user[email]",
+                                 id: "user_email",
+                                 input_html: { autocomplete: "email" })
+      = f.label :password
+      = render partial: "/shared/field_error", locals: { instance: @user, field: "email" }
+    .input
+      = render RubyUI::Input.new(type: :password,
+                                 required: true,
+                                 id: "user_password",
+                                 name: "user[password]",
+                                 input_html: { autocomplete: "current-password" })
+      = render partial: "/shared/field_error", locals: { instance: @user, field: "password" }
+  .form-actions
+    = render RubyUI::Button.new(variant: :primary,
+                                type: :submit,
+                                name: "commit") do
+      %span Log in
+- if devise_mapping.registerable? && controller_name != 'registrations'
+  = link_to "Sign up", new_registration_path(resource_name)
+  %br/

@@ -1,0 +1,2 @@
+- if instance.errors[field.to_s].any?
+  %span= "#{field.capitalize} #{instance.errors[field.to_s].first}"

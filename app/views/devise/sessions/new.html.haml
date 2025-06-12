@@ -1,20 +1,23 @@
 %h2 Log in
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .form-inputs
-    = f.label :email
-    = render RubyUI::Input.new(type: :email,
-                               reqired: true,
-                               autofocus: true,
-                               name: "user[email]",
-                               id: "user_email",
-                               input_html: { autocomplete: "email" })
-    = f.label :password
-    = render RubyUI::Input.new(type: :password,
-                               required: true,
-                               id: "user_password",
-                               name: "user[password]",
-                               input_html: { autocomplete: "current-password" })
-    = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+    .input
+      = f.label :email
+      = render RubyUI::Input.new(type: :email,
+                                 reqired: true,
+                                 autofocus: true,
+                                 name: "user[email]",
+                                 id: "user_email",
+                                 input_html: { autocomplete: "email" })
+      = f.label :password
+      = render partial: "/shared/field_error", locals: { instance: @user, field: "email" }
+    .input
+      = render RubyUI::Input.new(type: :password,
+                                 required: true,
+                                 id: "user_password",
+                                 name: "user[password]",
+                                 input_html: { autocomplete: "current-password" })
+      = render partial: "/shared/field_error", locals: { instance: @user, field: "password" }
   .form-actions
     = f.button :submit, "Log in"
 - if devise_mapping.registerable? && controller_name != 'registrations'

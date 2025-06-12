@@ -25,7 +25,10 @@
                                  input_html: { autocomplete: "new_password" })
       = render partial: "/shared/field_error", locals: { instance: @user, field: "password_confirmation" }
   .form-actions
-    = f.button :submit, "Sign up"
+    = render RubyUI::Button.new(variant: :primary,
+                                type: :submit,
+                                name: "commit") do
+      %span Sign up
 - if controller_name != 'sessions'
   = link_to "Log in", new_session_path(resource_name)
   %br/

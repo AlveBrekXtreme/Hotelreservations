@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_11_121406) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_12_052816) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -29,8 +29,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_11_121406) do
     t.string "phone", null: false
     t.string "email", null: false
     t.bigint "hotel_id", null: false
-    t.datetime "arrival_date", null: false
-    t.datetime "depature_date", null: false
+    t.date "arrival_date", null: false
+    t.date "depature_date", null: false
     t.integer "number_of_rooms", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

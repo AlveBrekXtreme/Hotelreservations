@@ -5,15 +5,18 @@
   = render RubyUI::Input.new(type: :email,
                              reqired: true,
                              autofocus: true,
+                             name: "user[email]",
                              input_html: { autocomplete: "email" })
   = f.label :password
   = render RubyUI::Input.new(type: :password,
                              required: true,
+                             name: "user[password]",
                              hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                              input_html: { autocomplete: "new_password" })
   = f.label :password_confirmation
   = render RubyUI::Input.new(type: :password,
                              required: true,
+                             name: "user[password_confirmation]",
                              input_html: { autocomplete: "new_password" })
   .form-actions
     = f.button :submit, "Sign up"

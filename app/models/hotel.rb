@@ -5,6 +5,9 @@ class Hotel < ApplicationRecord
   validates :name, uniqueness: true
   validates :number_of_rooms, :price, numericality: { greater_than: 0 }
 
+  scope :by_max_price, ->(max_price) { where("price <= ?", max_price) }
+  scope :by_city, ->(city) { where(city: city) }
+
   def self.available_hotels_in_date_range(reservation_period, number_of_reserved_rooms)
     reserved_rooms_per_hotel = reserved_rooms_per_hotel_in_date_range(reservation_period)
     hotel_ids = available_hotel_ids(reserved_rooms_per_hotel, number_of_reserved_rooms)

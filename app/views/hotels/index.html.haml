@@ -2,7 +2,7 @@
   = render RubyUI::Form.new(action: search_hotels_path, method: :get, class: "flex") do
     = render RubyUI::FormField do
       = render RubyUI::Select.new(name: "search[city]") do
-        = render RubyUI::FormFieldLabel.new(value: "City")
+        = render RubyUI::FormFieldLabel.new { "City" }
         = render RubyUI::SelectTrigger do
           = render RubyUI::SelectValue.new(placeholder: "Select a city")
         = render RubyUI::SelectContent do
@@ -11,16 +11,18 @@
               = render RubyUI::SelectItem.new(value: city) do
                 = city
     = render RubyUI::FormField.new(class: "space-y-4") do
+      = render RubyUI::FormFieldLabel.new { "Arrival date" }
       = render RubyUI::Input.new(type: "string",
                                  name: "search[arrival_date]",
-                                 placeholder: "Select the arrival date",
+                                 placeholder: "Select a date",
                                  id: "arrival-date",
                                  data: {controller: "ruby-ui--calendar-input"})
       = render RubyUI::Calendar.new(input_id: "#arrival-date")
     = render RubyUI::FormField.new(class: "space-y-4") do
+      = render RubyUI::FormFieldLabel.new { "Departure date" }
       = render RubyUI::Input.new(type: "string",
                                  name: "search[depature_date]",
-                                 placeholder: "Select the departure date",
+                                 placeholder: "Select a date",
                                  id: "depature-date",
                                  data: {controller: "ruby-ui--calendar-input"})
       = render RubyUI::Calendar.new(input_id: "#depature-date")

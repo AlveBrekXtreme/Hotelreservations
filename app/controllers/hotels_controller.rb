@@ -2,6 +2,7 @@ class HotelsController < ApplicationController
   before_action :set_search_params, only: :search
 
   def index
+    @cities = Hotel.pluck(:city).uniq
   end
 
   def search

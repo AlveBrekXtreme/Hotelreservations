@@ -16,7 +16,6 @@ class Hotel < ApplicationRecord
   def self.reserved_rooms_per_hotel_in_date_range(date_range)
     Reservation
       .group(:hotel_id)
-      .joins(:hotel)
       .where("arrival_date IN (:range) OR depature_date IN (:range)", range: date_range)
       .sum(:number_of_rooms)
   end

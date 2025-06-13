@@ -5,6 +5,9 @@ class HotelsController < ApplicationController
   end
 
   def search
+    @hotels = Hotel.available_hotels_in_date_range(@arrival_date..@depature_date, @number_of_rooms)
+    @hotels = @hotels.by_city(@city)
+    @hotels = @hotels.by_max_price(@max_price) if @max_price.present?
   end
 
   private

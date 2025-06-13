@@ -1,5 +1,5 @@
 .search-filters
-  = render RubyUI::Form.new(url: search_hotels_url, method: :get, class: "flex") do
+  = render RubyUI::Form.new(action: search_hotels_path, method: :get, class: "flex") do
     = render RubyUI::FormField do
       = render RubyUI::Select.new(name: "search[city]") do
         = render RubyUI::FormFieldLabel.new(value: "City")
@@ -24,4 +24,10 @@
                                  id: "depature-date",
                                  data: {controller: "ruby-ui--calendar-input"})
       = render RubyUI::Calendar.new(input_id: "#depature-date")
-
+    = render RubyUI::FormField do
+      = render RubyUI::FormFieldLabel.new { "Max price" }
+      = render RubyUI::Input.new(type: "number", name: "search[max_price]")
+    = render RubyUI::Button.new(variant: :primary,
+                                type: :submit,
+                                name: "commit") do
+      %span Search

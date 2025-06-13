@@ -1,15 +1,27 @@
-.flex
-  .search-filters
-    = render RubyUI::Form.new(url: search_hotels_url, method: :get) do
-      = render RubyUI::FormField do
-        = render RubyUI::Select.new(name: "search[city]") do
-          = render RubyUI::FormFieldLabel.new(value: "City")
-          = render RubyUI::SelectTrigger do
-            = render RubyUI::SelectValue.new(placeholder: "Select a city")
-          = render RubyUI::SelectContent do
-            = render RubyUI::SelectGroup do
-              - @cities.each do |city|
-                = render RubyUI::SelectItem.new(value: city) do
-                  = city
-
+.search-filters
+  = render RubyUI::Form.new(url: search_hotels_url, method: :get, class: "flex") do
+    = render RubyUI::FormField do
+      = render RubyUI::Select.new(name: "search[city]") do
+        = render RubyUI::FormFieldLabel.new(value: "City")
+        = render RubyUI::SelectTrigger do
+          = render RubyUI::SelectValue.new(placeholder: "Select a city")
+        = render RubyUI::SelectContent do
+          = render RubyUI::SelectGroup do
+            - @cities.each do |city|
+              = render RubyUI::SelectItem.new(value: city) do
+                = city
+    = render RubyUI::FormField.new(class: "space-y-4") do
+      = render RubyUI::Input.new(type: "string",
+                                 name: "search[arrival_date]",
+                                 placeholder: "Select the arrival date",
+                                 id: "arrival-date",
+                                 data: {controller: "ruby-ui--calendar-input"})
+      = render RubyUI::Calendar.new(input_id: "#arrival-date")
+    = render RubyUI::FormField.new(class: "space-y-4") do
+      = render RubyUI::Input.new(type: "string",
+                                 name: "search[depature_date]",
+                                 placeholder: "Select the departure date",
+                                 id: "depature-date",
+                                 data: {controller: "ruby-ui--calendar-input"})
+      = render RubyUI::Calendar.new(input_id: "#depature-date")
 

@@ -28,6 +28,9 @@
                                  data: {controller: "ruby-ui--calendar-input"})
       = render RubyUI::Calendar.new(input_id: "#depature-date")
     = render RubyUI::FormField do
+      = render RubyUI::FormFieldLabel.new { "Number of rooms wanted" }
+      = render RubyUI::Input.new(type: "number", name: "search[number_of_rooms]")
+    = render RubyUI::FormField do
       = render RubyUI::FormFieldLabel.new { "Max price" }
       = render RubyUI::Input.new(type: "number", name: "search[max_price]")
     = render RubyUI::Button.new(variant: :primary,

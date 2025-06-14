@@ -1,11 +1,12 @@
 .search-filters
   = render RubyUI::Form.new(action: search_hotels_path, method: :get, class: "flex") do
     = render RubyUI::FormField do
-      = render RubyUI::Select.new(name: "search[city]") do
+      = render RubyUI::Select do
         = render RubyUI::FormFieldLabel.new { "City" }
+        = render RubyUI::SelectInput.new(name: "search[city]", id: "city")
         = render RubyUI::SelectTrigger do
-          = render RubyUI::SelectValue.new(placeholder: "Select a city")
-        = render RubyUI::SelectContent do
+          = render RubyUI::SelectValue.new(placeholder: "Select a city", id: "city")
+        = render RubyUI::SelectContent.new(outlet_id: "city") do
           = render RubyUI::SelectGroup do
             - @cities.each do |city|
               = render RubyUI::SelectItem.new(value: city) do

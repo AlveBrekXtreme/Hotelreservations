@@ -23,7 +23,7 @@ class HotelsController < ApplicationController
     @city = search_params[:city]
     @arrival_date = search_params[:arrival_date]&.to_date
     @depature_date = search_params[:depature_date]&.to_date
-    @number_of_rooms = search_params[:number_of_rooms]
+    @number_of_rooms = search_params[:number_of_rooms].to_i
     @max_price = search_params[:max_price]
   end
 

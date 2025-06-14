@@ -31,7 +31,7 @@ class HotelsController < ApplicationController
     render turbo_stream: turbo_stream.replace(
       "hotels",
       partial: "available_hotels",
-      hotels: hotels
+      locals: { hotels: hotels }
     )
   end
 end

@@ -1,5 +1,5 @@
 class Administrators::HotelsController < ApplicationController
-  before_action :find_hotel, only: [ :edit, :update ]
+  before_action :find_hotel, only: [ :edit, :update, :destroy ]
 
   def index
     @hotels = Hotel.all
@@ -27,6 +27,14 @@ class Administrators::HotelsController < ApplicationController
       redirect_to administrators_hotels_path
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @hotel.destroy
+      render turbo_stream: turbo_stream.destroy(dom_id(@hotel))
+    else
+      head :unprocessable_entity
     end
   end
 

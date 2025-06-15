@@ -1,5 +1,5 @@
 NAMES = %w[ole dole doffen].freeze
-CITIES = %w[Porsgrunn, Porsgrunn, Skien, Skien, Siljan].freeze
+CITIES = %w[Porsgrunn Porsgrunn Skien Skien Siljan].freeze
 
 def generate_users
   User.create(email: "alve@rubynor.com", password: "admin123", admin_user: true)

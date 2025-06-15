@@ -1,5 +1,6 @@
 class Administrators::HotelsController < ApplicationController
   before_action :find_hotel, only: [ :edit, :update, :destroy ]
+  before_action :authorize_admin!
 
   def index
     @hotels = Hotel.all

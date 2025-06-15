@@ -1,17 +1,46 @@
 class Administrators::HotelsController < ApplicationController
+  before_action :find_hotel, only: [ :edit, :update ]
+
   def index
   end
 
   def new
+    @hotel = Hotel.new
   end
 
   def edit
   end
 
   def create
+    @hotel = Hotel.new(hotel_params)
+    if @hotel.save
+      redirect_to administrators_hotels_path
+    else
+      render :new
+    end
   end
 
 
   def update
+    if @hotel.update(hotel_params)
+      redirect_to administrators_hotels_path
+    else
+      render :edit
+    end
+  end
+
+  private
+
+  def hotel_params
+    params.require(:hotel).permit(
+      :name,
+      :city,
+      :number_of_rooms,
+      :price
+    )
+  end
+
+  def find_hotel
+    @hotel = Hotel.find(params[:id])
   end
 end

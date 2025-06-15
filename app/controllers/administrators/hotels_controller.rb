@@ -2,6 +2,7 @@ class Administrators::HotelsController < ApplicationController
   before_action :find_hotel, only: [ :edit, :update ]
 
   def index
+    @hotels = Hotel.all
   end
 
   def new

@@ -1,2 +1,3 @@
-.grid{id: "hotels"}
+.cards{id: "hotels"}
   - hotels.each do |hotel|
+    = render "hotel_card", hotel: hotel

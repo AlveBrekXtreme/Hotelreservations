@@ -1,3 +1,6 @@
 .cards{id: "hotels"}
   - hotels.each do |hotel|
     = render "hotel_card", hotel: hotel
+.flex.justify-center
+  - if hotels.empty?
+    = render RubyUI::Text.new(class: "text-xl font-semibold") { "No available hotels found" }

@@ -9,7 +9,14 @@ class HotelsController < ApplicationController
     hotels = Hotel.available_hotels_in_date_range(@arrival_date..@depature_date, @number_of_rooms)
     hotels = hotels.by_city(@city)
     hotels = hotels.by_max_price(@max_price) if @max_price.present?
-    search_results(hotels)
+    search_results(
+      hotels,
+      {
+        arrival_date: @arrival_date,
+        depature_date: @depature_date,
+        number_of_rooms: @number_of_rooms
+      }
+    )
   end
 
   private
@@ -27,11 +34,11 @@ class HotelsController < ApplicationController
     @max_price = search_params[:max_price]
   end
 
-  def search_results(hotels)
+  def search_results(hotels, prefilled_data)
     render turbo_stream: turbo_stream.replace(
       "hotels",
       partial: "available_hotels",
-      locals: { hotels: hotels }
+      locals: { hotels: hotels, prefilled_data: prefilled_data }
     )
   end
 end

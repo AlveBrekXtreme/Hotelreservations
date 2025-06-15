@@ -1,4 +1,4 @@
-class ReservationController < ApplicationController
+class ReservationsController < ApplicationController
   before_action :prefill_data, only: :new
 
   def new

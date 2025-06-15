@@ -7,5 +7,10 @@
     = render RubyUI::Text.new(class: "text-sm font-semibold") { "Total rooms" }
     = render RubyUI::Text.new(class: "text-sm") { "#{hotel.number_of_rooms}" }
   = render RubyUI::CardFooter do
-    = render RubyUI::Button.new(variant: :primary) { "Book reservation" }
+    = link_to new_reservation_path(hotel_id: hotel.id,
+                                   arrival_date: prefilled_data[:arrival_date],
+                                   depature_date: prefilled_data[:depature_date],
+                                   number_of_rooms: prefilled_data[:number_of_rooms],
+      ) do
+      = render RubyUI::Button.new(variant: :primary) { "Book reservation" }
 

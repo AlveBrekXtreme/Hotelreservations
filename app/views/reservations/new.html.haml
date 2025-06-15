@@ -1,0 +1,11 @@
+= simple_form_for @reservation, data: { turbo: false } do |f|
+  = f.hidden_field :hotel_id
+  = f.input :first_name, input_html: { class: "form-input" }, label: "First name", required: true, as: :string
+  = f.input :last_name, input_html: { class: "form-input" }, label: "Last name", required: true, as: :string
+  = f.input :phone, input_html: { class: "form-input" }, label: "Phone number", required: true, as: :string
+  = f.input :email, input_html: { class: "form-input" }, label: "Email", required: true, as: :email
+  = f.input :arrival_date, input_html: { class: "form-input opacity-50", readonly: :readonly }, label: "Arrival date", as: :string
+  = f.input :depature_date, input_html: { class: "form-input opacity-50", readonly: :readonly }, label: "Depature date", as: :string
+  = f.input :number_of_rooms, input_html: { class: "form-input opacity-50", readonly: :readonly }, label: "Number of rooms", as: :integer
+  = render RubyUI::Button.new(variant: :primary) do
+    = f.submit "Create reservation"

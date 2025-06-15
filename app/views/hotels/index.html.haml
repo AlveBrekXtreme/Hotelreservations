@@ -1,0 +1,43 @@
+.search-filters
+  = render RubyUI::Form.new(action: search_hotels_path, method: :get, class: "flex") do
+    = render RubyUI::FormField do
+      = render RubyUI::Select do
+        = render RubyUI::FormFieldLabel.new { "City" }
+        = render RubyUI::SelectInput.new(required: true, name: "search[city]", id: "city")
+        = render RubyUI::SelectTrigger do
+          = render RubyUI::SelectValue.new(placeholder: "Select a city", id: "city")
+        = render RubyUI::SelectContent.new(outlet_id: "city") do
+          = render RubyUI::SelectGroup do
+            - @cities.each do |city|
+              = render RubyUI::SelectItem.new(value: city) do
+                = city
+    = render RubyUI::FormField.new(class: "space-y-4") do
+      = render RubyUI::FormFieldLabel.new { "Arrival date" }
+      = render RubyUI::Input.new(type: "string",
+                                 name: "search[arrival_date]",
+                                 required: true,
+                                 placeholder: "Select a date",
+                                 id: "arrival-date",
+                                 data: {controller: "ruby-ui--calendar-input"})
+      = render RubyUI::Calendar.new(input_id: "#arrival-date")
+    = render RubyUI::FormField.new(class: "space-y-4") do
+      = render RubyUI::FormFieldLabel.new { "Departure date" }
+      = render RubyUI::Input.new(type: "string",
+                                 name: "search[depature_date]",
+                                 required: true,
+                                 placeholder: "Select a date",
+                                 id: "depature-date",
+                                 data: {controller: "ruby-ui--calendar-input"})
+      = render RubyUI::Calendar.new(input_id: "#depature-date")
+    = render RubyUI::FormField do
+      = render RubyUI::FormFieldLabel.new { "Number of rooms wanted" }
+      = render RubyUI::Input.new(required: true, type: "number", name: "search[number_of_rooms]")
+    = render RubyUI::FormField do
+      = render RubyUI::FormFieldLabel.new { "Max price" }
+      = render RubyUI::Input.new(type: "number", name: "search[max_price]")
+    = render RubyUI::Button.new(variant: :primary,
+                                type: :submit,
+                                name: "commit") do
+      %span Search
+.mt-8
+  %div{id: "hotels"}

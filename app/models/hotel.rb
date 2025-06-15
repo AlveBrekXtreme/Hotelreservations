@@ -25,7 +25,7 @@ class Hotel < ApplicationRecord
 
   def self.available_hotel_ids(reserved_rooms_per_hotel, number_of_reserved_rooms)
     Hotel.all.map do |hotel|
-      hotel.id if hotel.number_of_rooms >= reserved_rooms_per_hotel[hotel.id] + number_of_reserved_rooms
+      hotel.id if hotel.number_of_rooms >= reserved_rooms_per_hotel[hotel.id].to_i + number_of_reserved_rooms
     end
   end
 end

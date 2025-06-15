@@ -1,0 +1,11 @@
+= render RubyUI::Card.new(class: "mx-8") do
+  = render RubyUI::CardHeader do
+    = render RubyUI::CardTitle.new { hotel.name }
+  = render RubyUI::CardContent do
+    = render RubyUI::Text.new(class: "text-sm font-semibold") { "Price per night" }
+    = render RubyUI::Text.new(class: "text-sm") { "#{hotel.price} kr" }
+    = render RubyUI::Text.new(class: "text-sm font-semibold") { "Total rooms" }
+    = render RubyUI::Text.new(class: "text-sm") { "#{hotel.number_of_rooms}" }
+  = render RubyUI::CardFooter do
+    = render RubyUI::Button.new(variant: :primary) { "Book reservation" }
+

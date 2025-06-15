@@ -21,9 +21,9 @@ class HotelsController < ApplicationController
 
   def set_search_params
     @city = search_params[:city]
-    @arrival_date = search_params[:arrival_date]
-    @depature_date = search_params[:depature_date]
-    @number_of_rooms = search_params[:number_of_rooms]
+    @arrival_date = search_params[:arrival_date]&.to_date
+    @depature_date = search_params[:depature_date]&.to_date
+    @number_of_rooms = search_params[:number_of_rooms].to_i
     @max_price = search_params[:max_price]
   end
 
@@ -31,7 +31,7 @@ class HotelsController < ApplicationController
     render turbo_stream: turbo_stream.replace(
       "hotels",
       partial: "available_hotels",
-      hotels: hotels
+      locals: { hotels: hotels }
     )
   end
 end

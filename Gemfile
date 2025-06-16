@@ -51,3 +51,5 @@ end
 gem "phlex-rails", "~> 2.3"
 
 gem "tailwind_merge", "~> 1.3"
+
+gem "hotwire-rails", "~> 0.1.3"

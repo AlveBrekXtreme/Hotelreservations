@@ -16,7 +16,7 @@ gem "haml"
 gem "haml-rails", "~> 2.0"
 gem "html2haml"
 
-gem "tailwindcss-rails", "~> 3.3.1"
+gem "tailwindcss-rails", "~> 4.0"
 
 gem "simple_form"
 

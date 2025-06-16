@@ -16,5 +16,9 @@
     = stylesheet_link_tag :app, "data-turbo-track": "reload"
     = javascript_importmap_tags
   %body
-    %main.container.mx-auto.mt-28.px-5
+    - if current_user&.admin_user && !request.path.include?(administrators_hotels_path)
+      .mt-8.ml-8
+        = render RubyUI::Button.new(variant: :primary) do
+          = link_to "Manage hotels", administrators_hotels_path
+    %main.container.mx-auto.px-5{class: "#{current_user&.admin_user ? "mt-20" : "mt-28"}" }
       = yield

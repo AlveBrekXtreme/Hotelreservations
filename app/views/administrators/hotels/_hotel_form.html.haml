@@ -1,0 +1,7 @@
+= simple_form_for [:administrators, hotel], data: { turbo: false } do |f|
+  = f.input :name, input_html: { class: "form-input" }, label: "Name", required: true, as: :string
+  = f.input :city, input_html: { class: "form-input" }, label: "City", required: true, as: :string
+  = f.input :number_of_rooms, input_html: { class: "form-input" }, label: "Number of rooms", as: :integer
+  = f.input :price, input_html: { class: "form-input" }, label: "Price per night", as: :float
+  = render RubyUI::Button.new(variant: :primary, class: "mt-8") do
+    = f.submit submit_text

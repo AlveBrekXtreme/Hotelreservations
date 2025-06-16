@@ -1,0 +1,12 @@
+.flex.justify-between.mb-4
+  = render RubyUI::Heading.new(level: 1) { "Hotels" }
+  = render RubyUI::Button.new(variant: :primary) do
+    = link_to "New hotel", new_administrators_hotel_path
+.space-y-8
+  - @hotels.each do |hotel|
+    .flex.justify-between.border-solid.border-2.rounded-md.p-4{id: dom_id(hotel)}
+      = render RubyUI::Text.new(class: "text-md font-semibold flex self-center") { hotel.name }
+      .flex.space-x-4
+        = render RubyUI::Button.new(variant: :primary) do
+          = link_to "Edit", edit_administrators_hotel_path(hotel)
+        = button_to "Delete", administrators_hotel_path(hotel), method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete this hotel?" } }, class: "whitespace-nowrap inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 px-4 py-2 h-9 text-sm"

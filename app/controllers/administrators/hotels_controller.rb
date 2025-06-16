@@ -33,7 +33,7 @@ class Administrators::HotelsController < ApplicationController
 
   def destroy
     if @hotel.destroy
-      render turbo_stream: turbo_stream.destroy(dom_id(@hotel))
+      render turbo_stream: turbo_stream.remove(helpers.dom_id(@hotel))
     else
       head :unprocessable_entity
     end

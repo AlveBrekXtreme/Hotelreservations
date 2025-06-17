@@ -5,14 +5,14 @@ There is also a page for managing hotels, where administrators can add, update a
 
 # Local setup
 
-## Tool versions
-`Ruby` -> `3.3.7` <br>
-`Bundle` -> `3.3.7` <br>
-`PostgreSQL` -> `7.0` 
-
 ## Install gems
 ```shell
 bundle install
+```
+
+## Copy and configure env file
+```shell
+cp .env.example .env
 ```
 
 ## Set up database
